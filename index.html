@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Soluciones Digitales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y reset */
+        :root {
+            --color-primario: #4a6fa5;
+            --color-secundario: #166088;
+            --color-acento: #4cb1a7;
+            --color-claro: #f8f9fa;
+            --color-oscuro: #333;
+            --color-texto: #444;
+            --sombra: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transicion: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-texto);
+            background-color: var(--color-claro);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .contenedor {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--color-primario);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transicion);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--color-secundario);
+            transform: translateY(-3px);
+            box-shadow: var(--sombra);
+        }
+        
+        .btn-acento {
+            background: var(--color-acento);
+        }
+        
+        .btn-acento:hover {
+            background: #3a9c92;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--sombra);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-contenedor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primario);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transicion);
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-primario);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(rgba(74, 111, 165, 0.8), rgba(22, 96, 136, 0.8)), url('https://source.unsplash.com/random/1600x900/?technology') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Servicios */
+        .servicios {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .titulo-seccion h2 {
+            font-size: 2.5rem;
+            color: var(--color-primario);
+            margin-bottom: 15px;
+        }
+        
+        .titulo-seccion p {
+            color: var(--color-texto);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card-servicio {
+            background: var(--color-claro);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transicion);
+            box-shadow: var(--sombra);
+        }
+        
+        .card-servicio:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            background-color: #ddd;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .card-contenido {
+            padding: 25px;
+        }
+        
+        .card-servicio h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--color-oscuro);
+        }
+        
+        /* Proyectos */
+        .proyectos {
+            padding: 100px 0;
+            background: var(--color-claro);
+        }
+        
+        .grid-proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card-proyecto {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+        
+        .card-proyecto:hover {
+            transform: scale(1.03);
+        }
+        
+        .proyecto-img {
+            height: 250px;
+            background-color: #ddd;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .proyecto-contenido {
+            padding: 20px;
+        }
+        
+        .proyecto-contenido h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--color-oscuro);
+        }
+        
+        /* Testimonios */
+        .testimonios {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .grid-testimonios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card-testimonio {
+            background: var(--color-claro);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+        
+        .testimonio-texto {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonio-autor {
+            display: flex;
+            align-items: center;
+        }
+        
+        .autor-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            background-position: center;
+            background-size: cover;
+            margin-right: 15px;
+        }
+        
+        .autor-info h4 {
+            font-weight: 600;
+        }
+        
+        .autor-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        /* Contacto */
+        .contacto {
+            padding: 100px 0;
+            background: linear-gradient(rgba(74, 111, 165, 0.9), rgba(22, 96, 136, 0.9)), url('https://source.unsplash.com/random/1600x900/?office') no-repeat center center/cover;
+            color: white;
+        }
+        
+        .contacto .titulo-seccion h2 {
+            color: white;
+        }
+        
+        .formulario-contacto {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .grupo-formulario {
+            margin-bottom: 20px;
+        }
+        
+        .grupo-formulario label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .grupo-formulario input, 
+        .grupo-formulario textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .grupo-formulario textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--color-oscuro);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .grid-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--color-acento);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            transition: var(--transicion);
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-acento);
+            padding-left: 5px;
+        }
+        
+        .redes-sociales {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .redes-sociales a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transicion);
+        }
+        
+        .redes-sociales a:hover {
+            background: var(--color-acento);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-contenedor {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .titulo-seccion h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="contenedor nav-contenedor">
+            <a href="#" class="logo">Nexus</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="contenedor">
+            <h1>Soluciones digitales para tu negocio</h1>
+            <p>Impulsamos tu presencia en línea con diseños innovadores y estrategias efectivas que generan resultados tangibles.</p>
+            <div class="hero-botones">
+                <a href="#servicios" class="btn">Nuestros Servicios</a>
+                <a href="#contacto" class="btn btn-acento">Contactar Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="servicios" id="servicios">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos una gama completa de servicios digitales para ayudar a tu negocio a crecer en el mundo online.</p>
+            </div>
+            <div class="grid-servicios">
+                <div class="card-servicio">
+                    <div class="card-img" style="background-image: url('https://source.unsplash.com/random/600x400/?webdesign')"></div>
+                    <div class="card-contenido">
+                        <h3>Diseño Web</h3>
+                        <p>Creación de sitios web modernos, responsive y atractivos que convierten visitantes en clientes.</p>
+                        <a href="#" class="btn">Más información</a>
+                    </div>
+                </div>
+                <div class="card-servicio">
+                    <div class="card-img" style="background-image: url('https://source.unsplash.com/random/600x400/?development')"></div>
+                    <div class="card-contenido">
+                        <h3>Desarrollo a Medida</h3>
+                        <p>Soluciones web personalizadas y aplicaciones que se adaptan a las necesidades específicas de tu negocio.</p>
+                        <a href="#" class="btn">Más información</a>
+                    </div>
+                </div>
+                <div class="card-servicio">
+                    <div class="card-img" style="background-image: url('https://source.unsplash.com/random/600x400/?marketing')"></div>
+                    <div class="card-contenido">
+                        <h3>Marketing Digital</h3>
+                        <p>Estrategias efectivas de SEO, SEM y redes sociales para aumentar tu visibilidad y engagement.</p>
+                        <a href="#" class="btn">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section class="proyectos" id="proyectos">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <h2>Proyectos Destacados</h2>
+                <p>Algunos de nuestros trabajos más recientes que demuestran nuestra creatividad y expertise.</p>
+            </div>
+            <div class="grid-proyectos">
+                <div class="card-proyecto">
+                    <div class="proyecto-img" style="background-image: url('https://source.unsplash.com/random/600x400/?website')"></div>
+                    <div class="proyecto-contenido">
+                        <h3>E-commerce Moderno</h3>
+                        <p>Tienda online con integración de pasarelas de pago y panel de administración.</p>
+                    </div>
+                </div>
+                <div class="card-proyecto">
+                    <div class="proyecto-img" style="background-image: url('https://source.unsplash.com/random/600x400/?app')"></div>
+                    <div class="proyecto-contenido">
+                        <h3>App de Productividad</h3>
+                        <p>Aplicación móvil para gestión de tareas con sincronización en la nube.</p>
+                    </div>
+                </div>
+                <div class="card-proyecto">
+                    <div class="proyecto-img" style="background-image: url('https://source.unsplash.com/random/600x400/?branding')"></div>
+                    <div class="proyecto-contenido">
+                        <h3>Rediseño de Marca</h3>
+                        <p>Renovación completa de identidad visual para empresa de tecnología.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonios" id="testimonios">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <h2>Lo que Dicen Nuestros Clientes</h2>
+                <p>La satisfacción de nuestros clientes es nuestra mayor prioridad y motivación.</p>
+            </div>
+            <div class="grid-testimonios">
+                <div class="card-testimonio">
+                    <p class="testimonio-texto">"Nexus transformó por completo nuestra presencia digital. El nuevo sitio web ha aumentado nuestras conversiones en un 40% en solo tres meses."</p>
+                    <div class="testimonio-autor">
+                        <div class="autor-img" style="background-image: url('https://source.unsplash.com/random/100x100/?person1')"></div>
+                        <div class="autor-info">
+                            <h4>María González</h4>
+                            <p>Directora de Marketing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-testimonio">
+                    <p class="testimonio-texto">"El equipo de desarrollo entendió perfectamente nuestras necesidades y entregó una solución que superó todas nuestras expectativas."</p>
+                    <div class="testimonio-autor">
+                        <div class="autor-img" style="background-image: url('https://source.unsplash.com/random/100x100/?person2')"></div>
+                        <div class="autor-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>CEO, TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-testimonio">
+                    <p class="testimonio-texto">"La estrategia de marketing digital que implementaron generó resultados tangibles desde el primer mes. Muy recomendables."</p>
+                    <div class="testimonio-autor">
+                        <div class="autor-img" style="background-image: url('https://source.unsplash.com/random/100x100/?person3')"></div>
+                        <div class="autor-info">
+                            <h4>Ana Martínez</h4>
+                            <p>Emprendedora</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contacto" id="contacto">
+        <div class="contenedor">
+            <div class="titulo-seccion">
+                <h2>Contáctanos</h2>
+                <p>¿Listo para llevar tu proyecto al siguiente nivel? ¡Estamos aquí para ayudarte!</p>
+            </div>
+            <form class="formulario-contacto">
+                <div class="grupo-formulario">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="tu@email.com" required>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="mensaje">Tu mensaje</label>
+                    <textarea id="mensaje" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-acento">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contenedor">
+            <div class="grid-footer">
+                <div class="footer-col">
+                    <h3>Nexus</h3>
+                    <p>Soluciones digitales innovadoras para impulsar tu negocio en el mundo online.</p>
+                    <div class="redes-sociales">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Diseño Web</a></li>
+                        <li><a href="#">Desarrollo</a></li>
+                        <li><a href="#">Marketing Digital</a></li>
+                        <li><a href="#">Branding</a></li>
+                        <li><a href="#">Consultoría</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Principal 123, Ciudad</li>
+                        <li><i class="fas fa-phone"></i> +34 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@nexus.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Nexus. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
